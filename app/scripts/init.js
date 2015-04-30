@@ -19,6 +19,7 @@ require.config({
 
   paths: {
     // modules
+    '#chat': 'modules/chat',
     '#hello': 'modules/hello',
 
     socketio: '/socket.io/socket.io',
