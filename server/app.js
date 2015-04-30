@@ -6,15 +6,17 @@
 var libraries = require('./stubs/libraries.json');
 
 // Module dependencies.
-var applicationRoot = __dirname,
-    express = require('express'), // Web framework
-    app = express(), // define server
-    path = require('path'), // Utilities for dealing with file paths
-    mongoose = require('mongoose'), // MongoDB integration
-    bodyParser = require('body-parser'),
-    port = process.env.PORT || 9000, // set our port
-    args = process.argv,
-    stubArg = ('true' === args[2]);
+var applicationRoot = __dirname;
+var express = require('express'); // Web framework
+var app = express(); // define server
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+var path = require('path'); // Utilities for dealing with file paths
+var mongoose = require('mongoose'); // MongoDB integration
+var bodyParser = require('body-parser');
+var port = process.env.PORT || 9000; // set our port
+var args = process.argv;
+var stubArg = ('true' === args[2]);
 
 // parses request body and populates request.body
 app.use(bodyParser.urlencoded({extended: true}));
@@ -62,10 +64,21 @@ router.route('/libraries')
 // all of our routes will be prefixed with /api
 app.use('/api', router);
 
+/***********
+ SOCKET.IO
+************/
+
+io.on('connection', function (socket) {
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+});
+
 /*****************
  START THE SERVER
 ******************/
 
-app.listen(port, function () {
+http.listen(port, function(){
   console.log('Express server listening on port %d in %s node', port, app.settings.env);
 });
