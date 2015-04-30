@@ -12,14 +12,12 @@ var config = require('./config').sass;
 
 gulp.task('sass:dev', function () {
   return gulp.src(config.mainSassFile)
-    .pipe($.cached('sassDev'))
     .pipe($.sass())
     .pipe(gulp.dest(config.cssDir));
 });
 
 gulp.task('sass:dist', function () {
   return gulp.src(config.mainSassFile)
-    .pipe($.cached('sassDist'))
     /*.pipe(sass({
       outputStyle: 'compressed'
     }))*/
