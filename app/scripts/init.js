@@ -6,6 +6,9 @@ require.config({
   deps: ['index'],
 
   shim: {
+    socketio: {
+      exports: 'io'
+    },
     backbone: {
       deps: ['underscore', 'jquery']
     },
@@ -17,6 +20,9 @@ require.config({
   paths: {
     // modules
     '#hello': 'modules/hello',
+
+    socketio: '/socket.io/socket.io',
+    // socketio: '../bower_components/socket.io-client/socket.io',
 
     jquery: '../bower_components/jquery/dist/jquery',
     underscore: '../bower_components/lodash/lodash',
