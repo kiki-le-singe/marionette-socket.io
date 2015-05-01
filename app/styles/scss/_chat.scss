@@ -2,13 +2,13 @@
   position: relative;
   background: $white;
   height: 400px;
+  color: $black;
 
   form {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    color: $black;
 
     input {
       width: 250px;
