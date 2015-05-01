@@ -73,6 +73,12 @@ io.on('connection', function (socket) {
   socket.on('disconnect', function () {
     console.log('user disconnected');
   });
+
+  socket.on('sendmessage', function (data) {
+    console.log(data);
+    console.log('message: ' + data.message);
+    io.emit('dispatchmessage', data.message);
+  });
 });
 
 /*****************
