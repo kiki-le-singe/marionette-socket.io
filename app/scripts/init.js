@@ -22,8 +22,8 @@ require.config({
     '#chat': 'modules/chat',
     '#hello': 'modules/hello',
 
-    socketio: '/socket.io/socket.io',
-    // socketio: '../bower_components/socket.io-client/socket.io',
+    socketio: 'http://localhost:3000/socket.io/socket.io', // make the variable 'host' dynamic
+    // socketio: '/socket.io/socket.io',
 
     jquery: '../bower_components/jquery/dist/jquery',
     underscore: '../bower_components/lodash/lodash',
